@@ -1,4 +1,5 @@
-import React from "react";
+import { useContext } from "react";
+import { MoviesContext } from "../../contexts/moviesContext";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -15,18 +16,24 @@ import Avatar from '@mui/material/Avatar';
 import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router";
 
-export default function MovieCard(props) {
-  const movie = props.movie;
+export default function MovieCard({ movie }) { 
 
-    const handleAddToFavorite = (e) => {
+  const { favorites, addToFavorites } = useContext(MoviesContext);
+
+  if (favorites.find((id) => id === movie.id)) {
+    movie.favorite = true;
+  } else {
+    movie.favorite = false
+  }
+
+  const handleAddToFavorite = (e) => {
     e.preventDefault();
-    props.selectFavorite(movie.id);
+    addToFavorites(movie);
   };
-
-
+  
   return (
     <Card>
-            <CardHeader
+      <CardHeader
         avatar={
           movie.favorite ? (
             <Avatar sx={{ backgroundColor: 'red' }}>
@@ -40,7 +47,6 @@ export default function MovieCard(props) {
           </Typography>
         }
       />
-
       <CardMedia
         sx={{ height: 500 }}
         image={
@@ -66,17 +72,14 @@ export default function MovieCard(props) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites" onClick={handleAddToFavorite}>
-        <FavoriteIcon color="primary" fontSize="large" />
-    </IconButton>
-
-
+        <IconButton aria-label="add to favorites" onClick={handleAddToFavorite}>
+            <FavoriteIcon color="primary" fontSize="large" />
+        </IconButton>
         <Link to={`/movies/${movie.id}`}>
-        <Button variant="outlined" size="medium" color="primary">
-          More Info ...
-        </Button>
+          <Button variant="outlined" size="medium" color="primary">
+            More Info ...
+          </Button>
         </Link>
-
       </CardActions>
     </Card>
   );
