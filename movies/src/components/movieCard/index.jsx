@@ -31,7 +31,14 @@ export default function MovieCard({ movie, action }) {
   };
   
   return (
-    <Card>
+    <Card
+    sx={{
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between"
+    }}
+    >
       <CardHeader
         avatar={
           movie.favorite ? (
@@ -71,7 +78,8 @@ export default function MovieCard({ movie, action }) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        
+
+
         {action(movie)}
         
         <Link to={`/movies/${movie.id}`}>

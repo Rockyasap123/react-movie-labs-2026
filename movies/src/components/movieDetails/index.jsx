@@ -8,7 +8,9 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
-import MovieReviews from "../movieReviews"
+import MovieReviews from "../movieReviews";
+import MovieRecommendations from "../movieRecommendations";
+import Box from "@mui/material/Box";
 
 
 const root = {
@@ -21,7 +23,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+const MovieDetails = ({ movie }) => { 
 const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -74,7 +76,10 @@ const [drawerOpen, setDrawerOpen] = useState(false);
           </li>
         ))}
       </Paper>
-      
+
+
+<MovieRecommendations movie={movie} />
+  
       <Fab
         color="secondary"
         variant="extended"
