@@ -6,6 +6,7 @@ import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
 
 const TopRatedPage = () => {
   const [movies, setMovies] = useState([]);
+  
   useEffect(() => {
     getTopRatedMovies().then(movies => {
         setMovies(movies);
