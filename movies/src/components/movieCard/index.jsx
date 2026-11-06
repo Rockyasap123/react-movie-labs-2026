@@ -14,10 +14,18 @@ import Grid from "@mui/material/Grid";
 import Avatar from '@mui/material/Avatar';
 import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router";
+import AddIcon from '@mui/icons-material/Add';
 
 export default function MovieCard({ movie, action }) {
 
   const { favorites, addToFavorites } = useContext(MoviesContext);
+  const {playlist, addToPlaylist} = useContext(MoviesContext);
+
+  if (playlist.find((id) => id === movie.id)) {
+    movie.playlist = true;
+  } else {
+    movie.playlist = false
+  }
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
@@ -28,6 +36,11 @@ export default function MovieCard({ movie, action }) {
   const handleAddToFavorite = (e) => {
     e.preventDefault();
     addToFavorites(movie);
+  };
+
+  const handleAddToPlaylist = (e) => {
+    e.preventDefault();
+    addToPlaylist(movie);
   };
   
   return (
@@ -47,6 +60,16 @@ export default function MovieCard({ movie, action }) {
             </Avatar>
           ) : null
         }
+
+        avatar={
+          movie.playlist ? (
+            <Avatar sx={{ backgroundColor: 'blue' }}>
+              <AddIcon />
+            </Avatar>
+          ) : null
+        }
+
+      
         title={
           <Typography variant="h5" component="p">
             {movie.title}{" "}

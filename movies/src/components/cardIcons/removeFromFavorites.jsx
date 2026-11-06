@@ -2,6 +2,7 @@ import { useContext } from "react";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { MoviesContext } from "../../contexts/moviesContext";
+import RemoveFromPlaylistIcon from "./removeFromPlaylist";
 
 const RemoveFromFavoritesIcon = ({ movie }) => {
   const context = useContext(MoviesContext);
