@@ -12,11 +12,11 @@ import { useParams } from "react-router";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
-import AddToWatchlistIcon from "../cardIcons/addToWatchList";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import MovieCard from "../movieCard";
+import AddToPlaylistIcon from "../cardIcons/addToPlaylist";
 
 
 
@@ -51,6 +51,8 @@ const MovieRecommendations = () => {
           gap: "16px",
           pb: 2,
           m: 0,
+          //https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::-webkit-scrollbar
+          //https://mui.com/system/getting-started/the-sx-prop/
           "&::-webkit-scrollbar": {
             height: 5,
           },
@@ -73,7 +75,7 @@ const MovieRecommendations = () => {
           >
             <MovieCard 
               movie={movie} 
-              action={(movie) => <AddToWatchlistIcon movie={movie} />} 
+              action={(movie) => <AddToPlaylistIcon movie={movie} />} 
             />
           </ImageListItem>
         ))}
