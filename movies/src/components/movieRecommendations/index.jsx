@@ -6,12 +6,9 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getMovieRecommendations } from "../../api/tmdb-api";
-import MovieList from "../movieList";
 import Spinner from "../spinner";
 import { useParams } from "react-router";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";

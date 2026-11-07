@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from "../components/spinner";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
+import RateMovieIcon from "../components/cardIcons/addRating";
 const HomePage = (props) => {
   const { data, error, isPending, isError } = useQuery({
     queryKey: ["discover"],
@@ -29,6 +30,10 @@ const HomePage = (props) => {
   localStorage.setItem("playlist", JSON.stringify(playlist));
   const addToPlaylist = (movieId) => true;
 
+  const ratings = movies.filter((m) => m.rating);
+  localStorage.setItem("ratings", JSON.stringify(ratings));
+  const addRating = (movieId) => true;
+
   return (
     <PageTemplate
       title="Discover Movies"
@@ -38,6 +43,7 @@ const HomePage = (props) => {
           <>
             <AddToFavoritesIcon movie={movie} />
             <AddToPlaylistIcon movie={movie} />
+            <RateMovieIcon movie={movie} />
           </>
         );
       }}
