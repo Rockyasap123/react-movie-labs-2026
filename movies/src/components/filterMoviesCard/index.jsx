@@ -55,11 +55,15 @@ export default function FilterMoviesCard(props) {
   return (
     <Card 
       sx={{
-        backgroundColor: "rgb(204, 204, 0)"
+        backgroundColor: "rgb(236, 222, 97)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+
       }} 
       variant="outlined">
-      <CardContent>
-        <Typography variant="h5" component="h1">
+      <CardContent sx={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Typography variant="h5" component="h1" sx>
           <SearchIcon fontSize="large" />
           Filter the movies.
         </Typography>
@@ -92,17 +96,11 @@ export default function FilterMoviesCard(props) {
         </FormControl>
       </CardContent>
       <CardMedia
-        sx={{ height: 300 }}
+        sx={{ height: 500, width: "100%"}}
         image={img}
         title="Filter"
       />
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-          <br />
-        </Typography>
-      </CardContent>
+     
     </Card>
   );
 }

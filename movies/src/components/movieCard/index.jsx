@@ -65,7 +65,7 @@ export default function MovieCard({ movie, action }) {
 
         avatar={
           movie.playlist ? (
-            <Avatar sx={{ backgroundColor: 'blue' }}>
+            <Avatar sx={{ backgroundColor: 'green' }}>
               <AddIcon />
             </Avatar>
           ) : null

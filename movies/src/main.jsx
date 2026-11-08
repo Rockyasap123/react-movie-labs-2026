@@ -14,7 +14,43 @@ import TopRatedPage from './pages/topRatedPage';
 import PopularMoviesPage from './pages/popularPage';
 import TrendingPage from './pages/trendingPage';
 import PlaylistPage from './pages/playlistPage';
+import {createTheme, ThemeProvider, CssBaseline} from '@mui/material';
 
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#e6900f", // Cinema red accent
+    },
+    secondary: {
+      main: "#f5c518", // IMDb gold accent
+    },
+    background: {
+      default: "#0a0d14", // Dark navy background
+      paper: "#13181f",   // Slate surface color for cards/header
+    },
+    text: {
+      primary: "#f8fafc",
+      secondary: "#94a3b8",
+    },
+  },
+  typography: {
+    fontFamily: 'Roboto, Arial, sans-serif',
+    h5: {
+      fontWeight: 650,
+    },
+  },
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8, // Rounded corners on all movie cards
+          boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+        },
+      },
+    },
+  },
+});
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,6 +64,7 @@ const queryClient = new QueryClient({
 
 const App = () => {
   return (
+    <ThemeProvider theme={darkTheme}>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SiteHeader />
@@ -49,6 +86,7 @@ const App = () => {
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 

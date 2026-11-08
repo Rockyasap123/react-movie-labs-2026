@@ -1,3 +1,4 @@
+//This component is used to add a movie to the user's watchlist. 
 import { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import IconButton from "@mui/material/IconButton";
